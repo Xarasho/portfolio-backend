@@ -20,7 +20,7 @@ model Profile {
   specialty String
   phone     String
   email     String
-  birthDay  DateTime
+  birthDay  String
   location  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
