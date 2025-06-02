@@ -35,6 +35,6 @@ export class SoftSkillController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.softSkillService.remove(+id);
+    return this.softSkillService.remove(id);
   }
 }
