@@ -1,6 +1,6 @@
 import { IsNumber, IsString, Max, Min } from 'class-validator';
 
-export class CreateEducationDto {
+export class CreateExperienceDto {
   @IsString()
   name: string;
 

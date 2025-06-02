@@ -4,9 +4,10 @@ import { ResumeModule } from './resume/resume.module';
 import { ActivityModule } from './activity/activity.module';
 import { SoftSkillModule } from './soft-skill/soft-skill.module';
 import { EducationModule } from './education/education.module';
+import { ExperienceModule } from './experience/experience.module';
 
 @Module({
-  imports: [ProfileModule, ResumeModule, ActivityModule, SoftSkillModule, EducationModule],
+  imports: [ProfileModule, ResumeModule, ActivityModule, SoftSkillModule, EducationModule, ExperienceModule],
   controllers: [],
   providers: [],
 })
