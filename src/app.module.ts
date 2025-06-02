@@ -6,9 +6,10 @@ import { SoftSkillModule } from './soft-skill/soft-skill.module';
 import { EducationModule } from './education/education.module';
 import { ExperienceModule } from './experience/experience.module';
 import { LanguageModule } from './language/language.module';
+import { SkillModule } from './skill/skill.module';
 
 @Module({
-  imports: [ProfileModule, ResumeModule, ActivityModule, SoftSkillModule, EducationModule, ExperienceModule, LanguageModule],
+  imports: [ProfileModule, ResumeModule, ActivityModule, SoftSkillModule, EducationModule, ExperienceModule, LanguageModule, SkillModule],
   controllers: [],
   providers: [],
 })
