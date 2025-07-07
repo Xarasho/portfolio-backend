@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateProfileDto } from './dto/create-profile.dto';
-import { PrismaClient } from '../../generated/prisma';
+import { PrismaClient } from 'generated/prisma';
 import { OnModuleInit } from '@nestjs/common';
 
 @Injectable()

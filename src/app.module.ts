@@ -12,7 +12,19 @@ import { BlogModule } from './blog/blog.module';
 import { MessageModule } from './message/message.module';
 
 @Module({
-  imports: [ProfileModule, ResumeModule, ActivityModule, SoftSkillModule, EducationModule, ExperienceModule, LanguageModule, SkillModule, ProjectModule, BlogModule, MessageModule],
+  imports: [
+    ProfileModule,
+    ResumeModule,
+    ActivityModule,
+    SoftSkillModule,
+    EducationModule,
+    ExperienceModule,
+    LanguageModule,
+    SkillModule,
+    ProjectModule,
+    BlogModule,
+    MessageModule,
+  ],
   controllers: [],
   providers: [],
 })

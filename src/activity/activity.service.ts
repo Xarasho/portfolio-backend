@@ -1,7 +1,7 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { CreateActivityDto } from './dto/create-activity.dto';
 import { UpdateActivityDto } from './dto/update-activity.dto';
-import { PrismaClient } from '../../generated/prisma';
+import { PrismaClient } from 'generated/prisma';
 
 @Injectable()
 export class ActivityService extends PrismaClient implements OnModuleInit {
