@@ -1,9 +1,15 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { CreateBlogDto } from './dto/create-blog.dto';
 import { PrismaClient } from '@prisma/client';
+import { UploaderService } from 'src/services/uploader/s3.service';
+import { v4 } from 'uuid';
 
 @Injectable()
 export class BlogService extends PrismaClient implements OnModuleInit {
+  constructor(private readonly uploaderService: UploaderService) {
+    super();
+  }
+
   async onModuleInit() {
     await this.$connect();
   }

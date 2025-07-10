@@ -56,7 +56,12 @@ export class ProjectService extends PrismaClient implements OnModuleInit {
     });
   }
 
-  remove(id: string) {
-    return this.project.delete({ where: { id } });
+  async remove(id: string) {
+    // return this.project.delete({ where: { id } });
+    const project = await this.project.delete({
+      where: { id },
+    });
+
+    await this.uploaderService.delete(project.image as string);
   }
 }
