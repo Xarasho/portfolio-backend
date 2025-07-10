@@ -52,7 +52,12 @@ export class BlogService extends PrismaClient implements OnModuleInit {
     return this.blog.findFirst({ where: { id } });
   }
 
-  remove(id: string) {
-    return this.blog.delete({ where: { id } });
+  async remove(id: string) {
+    // return this.blog.delete({ where: { id } });
+    const blog = await this.blog.delete({
+      where: { id },
+    });
+
+    await this.uploaderService.delete(blog.image as string);
   }
 }
