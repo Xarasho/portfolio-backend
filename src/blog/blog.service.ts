@@ -27,12 +27,25 @@ export class BlogService extends PrismaClient implements OnModuleInit {
     await this.uploaderService.upload(image, blog.image as string);
   }
 
-  findAll() {
-    return this.blog.findMany({
+  async findAll() {
+    // return this.blog.findMany({
+    //   orderBy: {
+    //     createdAt: 'desc',
+    //   },
+    // });
+    const blogs = await this.blog.findMany({
       orderBy: {
         createdAt: 'desc',
       },
     });
+    return await Promise.all(
+      blogs.map(async (blog) => {
+        const url = await this.uploaderService.getSignedUrl(
+          blog.image as string,
+        );
+        return { ...blog, image: url };
+      }),
+    );
   }
 
   findOne(id: string) {
