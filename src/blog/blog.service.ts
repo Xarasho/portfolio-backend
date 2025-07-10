@@ -14,10 +14,17 @@ export class BlogService extends PrismaClient implements OnModuleInit {
     await this.$connect();
   }
 
-  create(createBlogDto: CreateBlogDto) {
-    return this.blog.create({
-      data: createBlogDto,
+  async create(createBlogDto: CreateBlogDto, image: Express.Multer.File) {
+    // return this.blog.create({
+    //   data: createBlogDto,
+    // });
+    const blog = await this.blog.create({
+      data: {
+        ...createBlogDto,
+        image: v4(),
+      },
     });
+    await this.uploaderService.upload(image, blog.image as string);
   }
 
   findAll() {
