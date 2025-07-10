@@ -27,12 +27,20 @@ export class ProjectService extends PrismaClient implements OnModuleInit {
     await this.uploaderService.upload(image, project.image as string);
   }
 
-  findAll() {
-    return this.project.findMany({
+  async findAll() {
+    const projects = await this.project.findMany({
       orderBy: {
         createdAt: 'desc',
       },
     });
+    return await Promise.all(
+      projects.map(async (project) => {
+        const url = await this.uploaderService.getSignedUrl(
+          project.image as string,
+        );
+        return { ...project, image: url };
+      }),
+    );
   }
 
   findOne(id: string) {
