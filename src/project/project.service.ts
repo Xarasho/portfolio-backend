@@ -2,17 +2,29 @@ import { Injectable, OnModuleInit } from '@nestjs/common';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { PrismaClient } from '@prisma/client';
-
-// TODO: Add image service
+import { UploaderService } from 'src/services/uploader/s3.service';
+import { v4 } from 'uuid';
 
 @Injectable()
 export class ProjectService extends PrismaClient implements OnModuleInit {
+  constructor(private readonly uploaderService: UploaderService) {
+    super();
+  }
+
   async onModuleInit() {
     await this.$connect();
   }
 
-  create(createProjectDto: CreateProjectDto, image: Express.Multer.File) {
-    console.log({ createProjectDto, image });
+  async create(createProjectDto: CreateProjectDto, image: Express.Multer.File) {
+    // console.log({ createProjectDto, image });
+    const project = await this.project.create({
+      data: {
+        ...createProjectDto,
+        image: v4(),
+      },
+    });
+
+    await this.uploaderService.upload(image, project.image as string);
   }
 
   findAll() {
